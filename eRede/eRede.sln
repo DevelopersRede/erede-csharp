@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRede", "eRede\eRede.csproj", "{C70D73B7-C763-44F5-BC4C-A89867172895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{6204C9E9-FBF9-453D-8AA2-20B73CF74B5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C70D73B7-C763-44F5-BC4C-A89867172895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70D73B7-C763-44F5-BC4C-A89867172895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70D73B7-C763-44F5-BC4C-A89867172895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70D73B7-C763-44F5-BC4C-A89867172895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6204C9E9-FBF9-453D-8AA2-20B73CF74B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6204C9E9-FBF9-453D-8AA2-20B73CF74B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6204C9E9-FBF9-453D-8AA2-20B73CF74B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6204C9E9-FBF9-453D-8AA2-20B73CF74B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
