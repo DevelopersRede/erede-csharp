@@ -24,11 +24,11 @@ var transaction = new Transaction
 );
 
 // Autoriza a transação
-transaction = new eRede.eRede(store).create(transaction);
+var response = new eRede.eRede(store).create(transaction);
 
-if (transaction.returnCode == "00")
+if (response.returnCode == "00")
 {
-    Console.WriteLine("Transação autorizada com sucesso: " + transaction.tid);
+    Console.WriteLine("Transação autorizada com sucesso: " + response.tid);
 }
 ```
 
@@ -52,11 +52,11 @@ var transaction = new Transaction
 ).Capture(false);
 
 // Autoriza a transação
-transaction = new eRede.eRede(store).create(transaction);
+var response = new eRede.eRede(store).create(transaction);
 
-if (transaction.returnCode == "00")
+if (response.returnCode == "00")
 {
-    Console.WriteLine("Transação autorizada com sucesso: " + transaction.tid);
+    Console.WriteLine("Transação autorizada com sucesso: " + response.tid);
 }
 ```
 
@@ -80,10 +80,10 @@ var transaction = new Transaction
 ).Iata("code123", "250");
 
 // Autoriza a transação
-transaction = new eRede.eRede(store).create(transaction);
+var response = new eRede.eRede(store).create(transaction);
 
-if (transaction.returnCode == "00")
+if (response.returnCode == "00")
 {
-    Console.WriteLine("Transação autorizada com sucesso: " + transaction.tid);
+    Console.WriteLine("Transação autorizada com sucesso: " + response.tid);
 }
 ```
