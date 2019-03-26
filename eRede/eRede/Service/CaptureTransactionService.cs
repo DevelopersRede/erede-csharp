@@ -8,9 +8,9 @@ namespace eRede.Service
         {
         }
 
-        public Transaction Execute()
+        public TransactionResponse Execute()
         {
-            return Execute(Method.PUT);
+            return base.Execute(Method.PUT);
         }
     }
 }

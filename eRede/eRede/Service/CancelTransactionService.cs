@@ -6,9 +6,9 @@ namespace eRede.Service
         {
         }
 
-        protected string getUri()
+        protected override string getUri()
         {
-            return getUri() + "/" + tid + "/refunds";
+            return base.getUri() + "/" + tid + "/refunds";
         }
     }
 }

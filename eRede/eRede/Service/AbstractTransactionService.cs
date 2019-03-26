@@ -17,20 +17,13 @@ namespace eRede.Service
 
         public string tid { get; set; }
 
-        protected string getUri()
+        protected virtual string getUri()
         {
             return store.environment.Endpoint("transactions");
         }
 
-        public Transaction Execute(Method method = Method.POST)
+        public TransactionResponse Execute(Method method = Method.POST)
         {
-            var json = JsonConvert.SerializeObject(transaction, Formatting.None,
-                new JsonSerializerSettings
-                {
-                    DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-
             var request = new RestRequest {Method = method, RequestFormat = DataFormat.Json};
 
             request.AddJsonBody(transaction);
@@ -38,7 +31,7 @@ namespace eRede.Service
             return sendRequest(request);
         }
 
-        protected Transaction sendRequest(RestRequest request)
+        protected TransactionResponse sendRequest(RestRequest request)
         {
             var client = new RestClient(getUri())
             {
@@ -51,7 +44,7 @@ namespace eRede.Service
 
             if (status < 200 || status >= 400) throw response.ErrorException;
 
-            return JsonConvert.DeserializeObject<Transaction>(response.Content);
+            return JsonConvert.DeserializeObject<TransactionResponse>(response.Content);
         }
     }
 }

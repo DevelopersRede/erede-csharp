@@ -18,6 +18,7 @@ namespace eRede
         public Authorization authorization { get; set; }
         public string authorizationCode { get; set; }
         public string cancelId { get; set; }
+
         public bool capture { get; set; }
         public string cardBin { get; set; }
         public string cardHolderName { get; set; }
@@ -107,7 +108,7 @@ namespace eRede
         }
 
 
-        private Transaction SetCard(string cardNumber, string securityCode, string expirationMonth,
+        private void SetCard(string cardNumber, string securityCode, string expirationMonth,
             string expirationYear,
             string cardHolderName, string kind)
         {
@@ -117,8 +118,6 @@ namespace eRede
             this.expirationYear = expirationYear;
             this.cardHolderName = cardHolderName;
             this.kind = kind;
-
-            return this;
         }
     }
 }

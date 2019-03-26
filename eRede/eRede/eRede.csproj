@@ -63,6 +63,7 @@
     <Compile Include="Flight.cs" />
     <Compile Include="Iata.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Link.cs" />
     <Compile Include="Passenger.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Store.cs" />
     <Compile Include="ThreeDSecure.cs" />
     <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionResponse.cs" />
     <Compile Include="Url.cs" />
   </ItemGroup>
   <ItemGroup>

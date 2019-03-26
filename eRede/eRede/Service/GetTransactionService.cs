@@ -11,18 +11,18 @@ namespace eRede.Service
         public string reference { get; set; }
         public bool refund { get; set; }
 
-        protected string getUri()
+        protected override string getUri()
         {
-            var uri = getUri();
+            var uri = base.getUri();
 
             if (reference != null) return uri + "?reference=" + reference;
 
             if (refund) return uri + "/" + tid + "/refunds";
 
-            return uri;
+            return uri + "/" + tid;
         }
 
-        public Transaction Execute()
+        public TransactionResponse Execute()
         {
             var request = new RestRequest {Method = Method.GET};
 

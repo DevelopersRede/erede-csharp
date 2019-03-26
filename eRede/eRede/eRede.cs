@@ -14,33 +14,33 @@ namespace eRede
             this.store = store;
         }
 
-        public Transaction authorize(Transaction transaction)
+        public TransactionResponse authorize(Transaction transaction)
         {
             return create(transaction);
         }
 
-        public Transaction create(Transaction transaction)
+        public TransactionResponse create(Transaction transaction)
         {
             var createTransactionService = new CreateTransactionService(store, transaction);
 
             return createTransactionService.Execute();
         }
 
-        public Transaction cancel(Transaction transaction)
+        public TransactionResponse cancel(Transaction transaction)
         {
             var cancelTransactionService = new CancelTransactionService(store, transaction);
 
             return cancelTransactionService.Execute();
         }
 
-        public Transaction capture(Transaction transaction)
+        public TransactionResponse capture(Transaction transaction)
         {
             var captureTransactionService = new CaptureTransactionService(store, transaction);
 
             return captureTransactionService.Execute();
         }
 
-        public Transaction get(string tid)
+        public TransactionResponse get(string tid)
         {
             var getTransactionService = new GetTransactionService(store)
             {
@@ -50,7 +50,7 @@ namespace eRede
             return getTransactionService.Execute();
         }
 
-        public Transaction getByReference(string reference)
+        public TransactionResponse getByReference(string reference)
         {
             var getTransactionService = new GetTransactionService(store)
             {
@@ -60,7 +60,7 @@ namespace eRede
             return getTransactionService.Execute();
         }
 
-        public Transaction getRefunds(string tid)
+        public TransactionResponse getRefunds(string tid)
         {
             var getTransactionService = new GetTransactionService(store)
             {
@@ -71,18 +71,12 @@ namespace eRede
             return getTransactionService.Execute();
         }
 
-        public Transaction zero(Transaction transaction)
+        public TransactionResponse zero(Transaction transaction)
         {
-            var amount = transaction.amount;
-            var capture = transaction.capture;
-
             transaction.amount = 0;
             transaction.capture = true;
-            transaction = create(transaction);
-            transaction.amount = amount;
-            transaction.capture = capture;
 
-            return transaction;
+            return create(transaction);
         }
     }
 }
