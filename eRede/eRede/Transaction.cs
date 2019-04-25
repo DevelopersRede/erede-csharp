@@ -103,6 +103,11 @@ namespace eRede
             SetCard(cardNumber, securityCode, expirationMonth, expirationYear, cardHolderName, DEBIT);
 
             capture = true;
+            threeDSecure = new ThreeDSecure
+            {
+                embedded = true,
+                onFailure = ThreeDSecure.DECLINE_ON_FAILURE
+            };
 
             return this;
         }
