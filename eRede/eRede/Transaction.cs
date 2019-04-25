@@ -60,10 +60,10 @@ namespace eRede
             if (urls == null) urls = new List<Url>();
         }
 
-        public Transaction AddUrl(string url, string type = Url.Callback)
+        public Transaction AddUrl(string url, string kind = Url.Callback)
         {
             PrepareUrls();
-            urls.Add(new Url {type = type, url = url});
+            urls.Add(new Url {kind = kind, url = url});
 
             return this;
         }
