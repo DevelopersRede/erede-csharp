@@ -49,7 +49,8 @@ namespace eRede
         public ThreeDSecure threeDSecure { get; set; }
         public string tid { get; set; }
         public List<Url> urls { get; set; }
-
+        public Additional additional { get; set; }
+        
         private void PrepareRefunds()
         {
             if (refunds == null) refunds = new List<Refund>();
