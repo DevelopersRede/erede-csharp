@@ -1,3 +1,5 @@
+using System;
+using eRede.Service.Error;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -42,7 +44,16 @@ namespace eRede.Service
             var response = client.Execute(request);
             var status = (int) response.StatusCode;
 
-            if (status < 200 || status >= 400) throw response.ErrorException;
+            if (status < 200 || status >= 400)
+            {
+                RedeError error = JsonConvert.DeserializeObject<RedeError>(response.Content);
+                RedeException exception = new RedeException
+                {
+                    error = error
+                };
+
+                throw exception;
+            }
 
             return JsonConvert.DeserializeObject<TransactionResponse>(response.Content);
         }
