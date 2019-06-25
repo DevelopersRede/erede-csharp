@@ -1,97 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C70D73B7-C763-44F5-BC4C-A89867172895}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eRede</RootNamespace>
-    <AssemblyName>eRede</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Json.NET.Web, Version=1.0.49.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Json.NET.Web.1.0.49\lib\portable45-net45+win8+wpa81\Json.NET.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75">
-      <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Antifraud.cs" />
-    <Compile Include="Authorization.cs" />
-    <Compile Include="Capture.cs" />
-    <Compile Include="Cart.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="Environment.cs" />
-    <Compile Include="eRede.cs" />
-    <Compile Include="Flight.cs" />
-    <Compile Include="Iata.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Link.cs" />
-    <Compile Include="Passenger.cs" />
-    <Compile Include="Phone.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Refund.cs" />
-    <Compile Include="Service\AbstractTransactionService.cs" />
-    <Compile Include="Service\CancelTransactionService.cs" />
-    <Compile Include="Service\CaptureTransactionService.cs" />
-    <Compile Include="Service\CreateTransactionService.cs" />
-    <Compile Include="Service\GetTransactionService.cs" />
-    <Compile Include="Store.cs" />
-    <Compile Include="ThreeDSecure.cs" />
-    <Compile Include="Transaction.cs" />
-    <Compile Include="TransactionResponse.cs" />
-    <Compile Include="Url.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LICENSE" />
-    <Content Include="README.md" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-    -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Json.NET.Web" Version="1.0.49" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+      <PackageReference Include="RestSharp" Version="106.6.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Properties\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Properties\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Properties\**" />
+    </ItemGroup>
+
 </Project>
