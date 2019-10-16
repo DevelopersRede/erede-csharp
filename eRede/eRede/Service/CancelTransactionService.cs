@@ -4,6 +4,7 @@ namespace eRede.Service
     {
         public CancelTransactionService(Store store, Transaction transaction) : base(store, transaction)
         {
+            this.tid = transaction?.tid; 
         }
 
         protected override string getUri()
