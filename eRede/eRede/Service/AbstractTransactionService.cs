@@ -1,4 +1,3 @@
-using System;
 using eRede.Service.Error;
 using Newtonsoft.Json;
 using RestSharp;
@@ -40,6 +39,8 @@ namespace eRede.Service
                 UserAgent = eRede.UserAgent,
                 Authenticator = new HttpBasicAuthenticator(store.filliation, store.token)
             };
+
+            request.AddHeader("Transaction-Response", "brand-return-opened");
 
             var response = client.Execute(request);
             var status = (int) response.StatusCode;

@@ -13,8 +13,6 @@ namespace eRede
         public const int ORIGIN_MASTERPASS = 6;
 
         public int amount { get; set; }
-        public Antifraud antifraud { get; set; }
-        public bool antifraudRequired { get; set; }
         public Authorization authorization { get; set; }
         public string authorizationCode { get; set; }
         public string cancelId { get; set; }
@@ -50,7 +48,7 @@ namespace eRede
         public string tid { get; set; }
         public List<Url> urls { get; set; }
         public Additional additional { get; set; }
-        
+
         private void PrepareRefunds()
         {
             if (refunds == null) refunds = new List<Refund>();

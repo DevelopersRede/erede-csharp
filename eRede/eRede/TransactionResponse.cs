@@ -5,12 +5,10 @@ namespace eRede
     public class TransactionResponse
     {
         public int amount { get; set; }
-        public Antifraud antifraud { get; set; }
-        public bool antifraudRequired { get; set; }
 
         public string authorizationCode { get; set; }
         public string cancelId { get; set; }
-
+        public Brand brand { get; set; }
 
         public string cardBin { get; set; }
         public string cardHolderName { get; set; }

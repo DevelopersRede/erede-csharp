@@ -12,7 +12,7 @@ namespace Sample
             var pv = "";
             var token = "";
             var environment = Environment.Sandbox();
-            
+
             Credit(pv, token, environment);
         }
 
@@ -84,7 +84,8 @@ namespace Sample
 
                 if (response.returnCode == "220")
                 {
-                    Console.WriteLine("Tudo certo. Redirecione o cliente para autenticação\n{0}", response.threeDSecure.url);
+                    Console.WriteLine("Tudo certo. Redirecione o cliente para autenticação\n{0}",
+                        response.threeDSecure.url);
                 }
             }
             catch (RedeException e)
