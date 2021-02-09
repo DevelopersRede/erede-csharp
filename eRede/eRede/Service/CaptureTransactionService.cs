@@ -6,6 +6,7 @@ namespace eRede.Service
     {
         public CaptureTransactionService(Store store, Transaction transaction) : base(store, transaction)
         {
+            this.tid = transaction?.tid;
         }
 
         public TransactionResponse Execute()
