@@ -22,9 +22,9 @@ internal class GetTransactionService : AbstractTransactionService
         return uri + "/" + Tid;
     }
 
-        public TransactionResponse Execute()
-        {
-            var request = new RestRequest {Method = Method.GET};
+    public TransactionResponse Execute()
+    {
+        var request = new RestRequest { Method = Method.Get };
 
         return SendRequest(request);
     }
