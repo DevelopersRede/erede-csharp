@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRede", "eRede\eRede.csproj", "{A0BD7AFA-3EDA-4B4E-B88B-1D88C8FBF2C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{A0F9AFBD-36A2-4DCC-84B8-689F25885A10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRedeTests", "eRedeTests\eRedeTests.csproj", "{CC7BE3B9-15AE-4418-8D8B-97D6CE576312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{A0BD7AFA-3EDA-4B4E-B88B-1D88C8FBF2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0BD7AFA-3EDA-4B4E-B88B-1D88C8FBF2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0BD7AFA-3EDA-4B4E-B88B-1D88C8FBF2C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0F9AFBD-36A2-4DCC-84B8-689F25885A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0F9AFBD-36A2-4DCC-84B8-689F25885A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0F9AFBD-36A2-4DCC-84B8-689F25885A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0F9AFBD-36A2-4DCC-84B8-689F25885A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC7BE3B9-15AE-4418-8D8B-97D6CE576312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC7BE3B9-15AE-4418-8D8B-97D6CE576312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC7BE3B9-15AE-4418-8D8B-97D6CE576312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC7BE3B9-15AE-4418-8D8B-97D6CE576312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

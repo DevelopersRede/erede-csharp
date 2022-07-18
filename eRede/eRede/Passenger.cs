@@ -1,10 +1,9 @@
-namespace eRede
+namespace eRede;
+
+public class Passenger
 {
-    public class Passenger
-    {
-        public string email { get; set; }
-        public string name { get; set; }
-        public Phone phone { get; set; }
-        public string ticket { get; set; }
-    }
+    public string Email { get; set; }
+    public string Name { get; set; }
+    public Phone Phone { get; set; }
+    public string Ticket { get; set; }
 }

@@ -1,32 +1,31 @@
 using RestSharp;
 
-namespace eRede.Service
+namespace eRede.Service;
+
+internal class GetTransactionService : AbstractTransactionService
 {
-    internal class GetTransactionService : AbstractTransactionService
+    public GetTransactionService(Store store, Transaction transaction = null) : base(store, transaction)
     {
-        public GetTransactionService(Store store, Transaction transaction = null) : base(store, transaction)
-        {
-        }
+    }
 
-        public string reference { get; set; }
-        public bool refund { get; set; }
+    public string Reference { get; init; }
+    public bool Refund { get; init; }
 
-        protected override string getUri()
-        {
-            var uri = base.getUri();
+    protected override string GetUri()
+    {
+        var uri = base.GetUri();
 
-            if (reference != null) return uri + "?reference=" + reference;
+        if (Reference != null) return uri + "?reference=" + Reference;
 
-            if (refund) return uri + "/" + tid + "/refunds";
+        if (Refund) return uri + "/" + Tid + "/Refunds";
 
-            return uri + "/" + tid;
-        }
+        return uri + "/" + Tid;
+    }
 
         public TransactionResponse Execute()
         {
             var request = new RestRequest {Method = Method.GET};
 
-            return sendRequest(request);
-        }
+        return SendRequest(request);
     }
 }

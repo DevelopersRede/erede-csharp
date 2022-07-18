@@ -1,36 +1,35 @@
 using System.Collections.Generic;
 
-namespace eRede
+namespace eRede;
+
+public class Flight
 {
-    public class Flight
+    public string Date { get; set; }
+    public string Ip { get; set; }
+    public string Number { get; set; }
+    public List<Passenger> Passenger { get; set; }
+
+    public string To { get; set; }
+
+    private void PreparePassenger()
     {
-        public string date { get; set; }
-        public string ip { get; set; }
-        public string number { get; set; }
-        public List<Passenger> Passenger { get; set; }
-
-        public string To { get; set; }
-
-        private void PreparePassenger()
-        {
-            if (Passenger == null) Passenger = new List<Passenger>();
-        }
+        Passenger ??= new List<Passenger>();
+    }
 
 
-        public Flight AddPassenger(Passenger passenger)
-        {
-            PreparePassenger();
+    public Flight AddPassenger(Passenger passenger)
+    {
+        PreparePassenger();
 
-            Passenger.Add(passenger);
+        Passenger.Add(passenger);
 
-            return this;
-        }
+        return this;
+    }
 
-        public List<Passenger>.Enumerator getPassengerEnumerator()
-        {
-            PreparePassenger();
+    public List<Passenger>.Enumerator GetPassengerEnumerator()
+    {
+        PreparePassenger();
 
-            return Passenger.GetEnumerator();
-        }
+        return Passenger.GetEnumerator();
     }
 }

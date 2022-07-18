@@ -1,40 +1,39 @@
 using System.Collections.Generic;
 
-namespace eRede
+namespace eRede;
+
+public class Customer
 {
-    public class Customer
+    public const string Male = "S";
+    public const string Female = "M";
+
+    public string Cpf { get; set; }
+    public List<Document> Documents { get; set; }
+    public string Email { get; set; }
+
+    public string Name { get; set; }
+    public string Gender { get; set; }
+    public Phone Phone { get; set; }
+
+    private void PrepareDocuments()
     {
-        public const string MALE = "S";
-        public const string FEMALE = "M";
-
-        public string cpf { get; set; }
-        public List<Document> documents { get; set; }
-        public string email { get; set; }
-
-        public string name { get; set; }
-        public string gender { get; set; }
-        public Phone phone { get; set; }
-
-        private void PrepareDocuments()
-        {
-            if (documents == null) documents = new List<Document>();
-        }
+        Documents ??= new List<Document>();
+    }
 
 
-        public Customer AddDocument(string type, string number)
-        {
-            PrepareDocuments();
+    public Customer AddDocument(string type, string number)
+    {
+        PrepareDocuments();
 
-            documents.Add(new Document {type = type, number = number});
+        Documents.Add(new Document { Type = type, Number = number });
 
-            return this;
-        }
+        return this;
+    }
 
-        public List<Document>.Enumerator getEnumerator()
-        {
-            PrepareDocuments();
+    public List<Document>.Enumerator GetEnumerator()
+    {
+        PrepareDocuments();
 
-            return documents.GetEnumerator();
-        }
+        return Documents.GetEnumerator();
     }
 }

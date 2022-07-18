@@ -1,9 +1,8 @@
-namespace eRede
+namespace eRede;
+
+public class Link
 {
-    public class Link
-    {
-        public string method { get; set; }
-        public string rel { get; set; }
-        public string href { get; set; }
-    }
+    public string Method { get; set; }
+    public string Rel { get; set; }
+    public string Href { get; set; }
 }

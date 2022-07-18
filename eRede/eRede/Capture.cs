@@ -1,9 +1,8 @@
-namespace eRede
+namespace eRede;
+
+public class Capture
 {
-    public class Capture
-    {
-        public int amount { get; set; }
-        public string dateTime { get; set; }
-        public string nsu { get; set; }
-    }
+    public int Amount { get; set; }
+    public string DateTime { get; set; }
+    public string Nsu { get; set; }
 }

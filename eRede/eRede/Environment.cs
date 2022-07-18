@@ -1,34 +1,33 @@
-namespace eRede
+namespace eRede;
+
+public class Environment
 {
-    public class Environment
+    private const string ProductionEndpoint = "https://api.userede.com.br/erede";
+    private const string SandboxEndpoint = "https://api.userede.com.br/desenvolvedores";
+    private const string Version = "v1";
+
+    private Environment(string baseUrl, string version)
     {
-        private const string PRODUCTION = "https://api.userede.com.br/erede";
-        private const string SANDBOX = "https://api.userede.com.br/desenvolvedores";
-        private const string VERSION = "v1";
+        _endpoint = $"{baseUrl}/{version}/";
+    }
 
-        private Environment(string baseUrl, string version)
-        {
-            endpoint = $"{baseUrl}/{version}/";
-        }
+    public string Ip { get; set; }
+    public string SessionId { get; set; }
 
-        public string ip { get; set; }
-        public string sessionId { get; set; }
+    private string _endpoint { get; }
 
-        private string endpoint { get; }
+    public static Environment Production()
+    {
+        return new Environment(ProductionEndpoint, Version);
+    }
 
-        public static Environment Production()
-        {
-            return new Environment(PRODUCTION, VERSION);
-        }
+    public static Environment Sandbox()
+    {
+        return new Environment(SandboxEndpoint, Version);
+    }
 
-        public static Environment Sandbox()
-        {
-            return new Environment(SANDBOX, VERSION);
-        }
-
-        public string Endpoint(string service)
-        {
-            return endpoint + service;
-        }
+    public string Endpoint(string service)
+    {
+        return _endpoint + service;
     }
 }

@@ -1,82 +1,100 @@
+using System;
 using eRede.Service;
 
-namespace eRede
+namespace eRede;
+
+public class eRede
 {
-    public class eRede
+    public const string Version = "1.0.0";
+    public const string UserAgent = "eRede/" + Version + "(SDK; C#)";
+
+    private readonly Store _store;
+
+    public eRede(Store store)
     {
-        public const string VERSION = "1.0.0";
-        public const string UserAgent = "eRede/" + VERSION + "(SDK; C#)";
+        _store = store;
+    }
 
-        private readonly Store store;
+    public TransactionResponse Authorize(Transaction transaction)
+    {
+        return Create(transaction);
+    }
 
-        public eRede(Store store)
+    public TransactionResponse Create(Transaction transaction)
+    {
+        var createTransactionService = new CreateTransactionService(_store, transaction);
+
+        return createTransactionService.Execute();
+    }
+
+    public TransactionResponse Cancel(Transaction transaction)
+    {
+        if (transaction.Tid is null) throw new ArgumentException("O tid não foi informado");
+
+        var cancelTransactionService = new CancelTransactionService(_store, transaction);
+
+        return cancelTransactionService.Execute();
+    }
+
+    public TransactionResponse Cancel(Transaction transaction, string tid)
+    {
+        transaction.Tid = tid;
+
+        return Cancel(transaction);
+    }
+
+    public TransactionResponse Capture(Transaction transaction)
+    {
+        if (transaction.Tid is null) throw new ArgumentException("O tid não foi informado");
+
+        var captureTransactionService = new CaptureTransactionService(_store, transaction);
+
+        return captureTransactionService.Execute();
+    }
+
+    public TransactionResponse Capture(Transaction transaction, string tid)
+    {
+        transaction.Tid = tid;
+
+        return Capture(transaction);
+    }
+
+    public TransactionResponse Get(string tid)
+    {
+        var getTransactionService = new GetTransactionService(_store)
         {
-            this.store = store;
-        }
+            Tid = tid
+        };
 
-        public TransactionResponse authorize(Transaction transaction)
+        return getTransactionService.Execute();
+    }
+
+    public TransactionResponse GetByReference(string reference)
+    {
+        var getTransactionService = new GetTransactionService(_store)
         {
-            return create(transaction);
-        }
+            Reference = reference
+        };
 
-        public TransactionResponse create(Transaction transaction)
+        return getTransactionService.Execute();
+    }
+
+    public TransactionResponse GetRefunds(string tid)
+    {
+        var getTransactionService = new GetTransactionService(_store)
         {
-            var createTransactionService = new CreateTransactionService(store, transaction);
+            Tid = tid,
+            Refund = true
+        };
 
-            return createTransactionService.Execute();
-        }
+        return getTransactionService.Execute();
+    }
 
-        public TransactionResponse cancel(Transaction transaction)
-        {
-            var cancelTransactionService = new CancelTransactionService(store, transaction);
+    public TransactionResponse Zero(Transaction transaction)
+    {
+        transaction.Amount = 0;
+        transaction.Capture = true;
 
-            return cancelTransactionService.Execute();
-        }
-
-        public TransactionResponse capture(Transaction transaction)
-        {
-            var captureTransactionService = new CaptureTransactionService(store, transaction);
-
-            return captureTransactionService.Execute();
-        }
-
-        public TransactionResponse get(string tid)
-        {
-            var getTransactionService = new GetTransactionService(store)
-            {
-                tid = tid
-            };
-
-            return getTransactionService.Execute();
-        }
-
-        public TransactionResponse getByReference(string reference)
-        {
-            var getTransactionService = new GetTransactionService(store)
-            {
-                reference = reference
-            };
-
-            return getTransactionService.Execute();
-        }
-
-        public TransactionResponse getRefunds(string tid)
-        {
-            var getTransactionService = new GetTransactionService(store)
-            {
-                tid = tid,
-                refund = true
-            };
-
-            return getTransactionService.Execute();
-        }
-
-        public TransactionResponse zero(Transaction transaction)
-        {
-            transaction.amount = 0;
-            transaction.capture = true;
-
-            return create(transaction);
-        }
+        return Create(transaction);
     }
 }

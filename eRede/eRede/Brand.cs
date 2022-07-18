@@ -1,9 +1,8 @@
-namespace eRede
+namespace eRede;
+
+public class Brand
 {
-    public class Brand
-    {
-        public string name { get; set; }
-        public string returnCode { get; set; }
-        public string returnMessage { get; set; }
-    }
+    public string Name { get; set; }
+    public string ReturnCode { get; set; }
+    public string ReturnMessage { get; set; }
 }

@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 
-namespace eRede
+namespace eRede;
+
+public class Iata
 {
-    public class Iata
+    public string Code { get; set; }
+    public string DepartureTax { get; set; }
+    public List<Flight> Flight { get; set; }
+
+    private void PrepareFlight()
     {
-        public string code { get; set; }
-        public string departureTax { get; set; }
-        public List<Flight> flight { get; set; }
+        Flight ??= new List<Flight>();
+    }
 
-        private void PrepareFlight()
-        {
-            if (flight == null) flight = new List<Flight>();
-        }
+    public Iata AddFlight(Flight flight)
+    {
+        PrepareFlight();
 
-        public Iata AddFlight(Flight flight)
-        {
-            PrepareFlight();
+        Flight.Add(flight);
 
-            this.flight.Add(flight);
-
-            return this;
-        }
+        return this;
     }
 }
