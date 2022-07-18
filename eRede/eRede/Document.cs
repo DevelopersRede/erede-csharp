@@ -1,8 +1,7 @@
-namespace eRede
+namespace eRede;
+
+public class Document
 {
-    public class Document
-    {
-        public string type { get; set; }
-        public string number { get; set; }
-    }
+    public string Type { get; set; }
+    public string Number { get; set; }
 }

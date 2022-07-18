@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Json.NET.Web" Version="1.0.49" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-        <PackageReference Include="RestSharp" Version="106.11.7" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1"/>
+        <PackageReference Include="RestSharp" Version="108.0.2-alpha.0.4"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Properties\**" />
+        <Compile Remove="Properties\**"/>
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Remove="Properties\**" />
+        <EmbeddedResource Remove="Properties\**"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Properties\**" />
+        <None Remove="Properties\**"/>
     </ItemGroup>
 
 </Project>

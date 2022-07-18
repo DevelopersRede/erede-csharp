@@ -1,51 +1,51 @@
 using System.Collections.Generic;
 
-namespace eRede
+namespace eRede;
+
+public class TransactionResponse
 {
-    public class TransactionResponse
-    {
-        public int amount { get; set; }
+    public int Amount { get; set; }
 
-        public string authorizationCode { get; set; }
-        public string cancelId { get; set; }
-        public Brand brand { get; set; }
+    public string AuthorizationCode { get; set; }
+    public string CancelId { get; set; }
+    public Brand Brand { get; set; }
+    public string BrandTid { get; set; }
 
-        public string cardBin { get; set; }
-        public string cardHolderName { get; set; }
-        public string cardNumber { get; set; }
-        public Cart cart { get; set; }
-        public string dateTime { get; set; }
-        public int distributorAffiliation { get; set; }
-        public string expirationMonth { get; set; }
-        public string expirationYear { get; set; }
-        public Iata iata { get; set; }
-        public int installments { get; set; }
-        public string kind { get; set; }
-        public string last4 { get; set; }
-        public string nsu { get; set; }
-        public string origin { get; set; }
-        public string reference { get; set; }
-        public string refundDateTime { get; set; }
-        public string refundId { get; set; }
-        public List<Refund> refunds { get; set; }
-
-
-        public string securityCode { get; set; }
-        public string softDescriptor { get; set; }
-        public string storageCard { get; set; }
+    public string CardBin { get; set; }
+    public string CardHolderName { get; set; }
+    public string CardNumber { get; set; }
+    public Cart Cart { get; set; }
+    public string DateTime { get; set; }
+    public int DistributorAffiliation { get; set; }
+    public string ExpirationMonth { get; set; }
+    public string ExpirationYear { get; set; }
+    public Iata Iata { get; set; }
+    public int Installments { get; set; }
+    public string Kind { get; set; }
+    public string Last4 { get; set; }
+    public string Nsu { get; set; }
+    public string Origin { get; set; }
+    public string Reference { get; set; }
+    public string RefundDateTime { get; set; }
+    public string RefundId { get; set; }
+    public List<Refund> Refunds { get; set; }
 
 
-        public bool subscription { get; set; }
-        public ThreeDSecure threeDSecure { get; set; }
+    public string SecurityCode { get; set; }
+    public string SoftDescriptor { get; set; }
+    public string StorageCard { get; set; }
 
-        public List<Url> urls { get; set; }
 
-        public List<Link> links { get; set; }
-        public Capture capture { get; set; }
-        public Authorization authorization { get; set; }
-        public string requestDateTime { get; set; }
-        public string tid { get; set; }
-        public string returnCode { get; set; }
-        public string returnMessage { get; set; }
-    }
+    public bool Subscription { get; set; }
+    public ThreeDSecure ThreeDSecure { get; set; }
+
+    public List<Url> Urls { get; set; }
+
+    public List<Link> Links { get; set; }
+    public Capture Capture { get; set; }
+    public Authorization Authorization { get; set; }
+    public string RequestDateTime { get; set; }
+    public string Tid { get; set; }
+    public string ReturnCode { get; set; }
+    public string ReturnMessage { get; set; }
 }

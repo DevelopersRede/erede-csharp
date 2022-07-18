@@ -1,13 +1,12 @@
-namespace eRede
-{
-    public class Url
-    {
-        public const string Callback = "callback";
-        public const string THREE_D_SECURE_FAILURE = "threeDSecureFailure";
-        public const string THREE_D_SECURE_SUCCESS = "threeDSecureSuccess";
+namespace eRede;
 
-        public string kind { get; set; }
-        public string type { get; set; }
-        public string url { get; set; }
-    }
+public class Url
+{
+    public const string Callback = "callback";
+    public const string ThreeDSecureFailure = "threeDSecureFailure";
+    public const string ThreeDSecureSuccess = "threeDSecureSuccess";
+
+    public string Kind { get; set; }
+    public string Type { get; set; }
+    public string url { get; set; }
 }

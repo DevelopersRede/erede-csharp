@@ -1,16 +1,15 @@
-namespace eRede
-{
-    public class ThreeDSecure
-    {
-        public const string CONTINUE_ON_FAILURE = "continue";
-        public const string DECLINE_ON_FAILURE = "decline";
+namespace eRede;
 
-        public string cavv { get; set; }
-        public string eci { get; set; }
-        public bool embedded { get; set; }
-        public string onFailure { get; set; }
-        public string url { get; set; }
-        public string userAgent { get; set; }
-        public string xid { get; set; }
-    }
+public class ThreeDSecure
+{
+    public const string ContinueOnFailure = "continue";
+    public const string DeclineOnFailure = "decline";
+
+    public string Cavv { get; set; }
+    public string Eci { get; set; }
+    public bool Embedded { get; set; }
+    public string OnFailure { get; set; }
+    public string Url { get; set; }
+    public string UserAgent { get; set; }
+    public string Xid { get; set; }
 }

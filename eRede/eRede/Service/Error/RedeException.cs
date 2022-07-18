@@ -1,9 +1,16 @@
 using System;
 
-namespace eRede.Service.Error
+namespace eRede.Service.Error;
+
+public class RedeException : Exception
 {
-    public class RedeException : Exception
+    public RedeException()
     {
-        public RedeError error { get; set; }
     }
+
+    public RedeException(string message) : base(message)
+    {
+    }
+
+    public RedeError Error { get; init; }
 }

@@ -1,37 +1,37 @@
 using System.Collections.Generic;
 
-namespace eRede
+namespace eRede;
+
+public class Cart
 {
-    public class Cart
+    public Address Billing { get; set; }
+    public Customer Customer { get; set; }
+    public Environment Environment { get; set; }
+    public Iata Iata { get; set; }
+    public List<Item> Items { get; set; }
+    public List<Address> Addresses { get; set; }
+
+    private void PrepareItems()
     {
-        public Address billing { get; set; }
-        public Customer customer { get; set; }
-        public Environment environment { get; set; }
-        public Iata iata { get; set; }
-        public List<Item> items { get; set; }
-        public List<Address> shipping { get; set; }
+        Items ??= new List<Item>();
+    }
 
-        private void PrepareItems()
-        {
-            if (items == null) items = new List<Item>();
-        }
+    public Address Address(int type = global::eRede.Address.Both)
+    {
+        var address = new Address();
 
-        public Address address(int type = Address.BOTH)
-        {
-            var address = new Address();
+        if ((type & global::eRede.Address.Billing) == global::eRede.Address.Billing) Billing = address;
 
-            if ((type & Address.BILLING) == Address.BILLING) billing = address;
+        if ((type & global::eRede.Address.Shipping) == global::eRede.Address.Shipping)
+            Addresses = new List<Address> { address };
 
-            if ((type & Address.SHIPPING) == Address.SHIPPING) shipping = new List<Address> {address};
+        return address;
+    }
 
-            return address;
-        }
+    public List<Item>.Enumerator GetItemEnumerator()
+    {
+        PrepareItems();
 
-        public List<Item>.Enumerator getItemEnumerator()
-        {
-            PrepareItems();
-
-            return items.GetEnumerator();
-        }
+        return Items.GetEnumerator();
     }
 }

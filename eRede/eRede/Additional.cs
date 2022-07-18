@@ -1,8 +1,7 @@
-namespace eRede
+namespace eRede;
+
+public class Additional
 {
-    public class Additional
-    {
-        public string gateway { get; set; }
-        public string module { get; set; }
-    }
+    public string Gateway { get; set; }
+    public string Module { get; set; }
 }

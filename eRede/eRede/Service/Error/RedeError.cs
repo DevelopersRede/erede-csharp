@@ -1,8 +1,7 @@
-namespace eRede.Service.Error
+namespace eRede.Service.Error;
+
+public class RedeError
 {
-    public class RedeError
-    {
-        public string returnCode { get; set; }
-        public string returnMessage { get; set; }
-    }
+    public string ReturnCode { get; set; }
+    public string ReturnMessage { get; set; }
 }
