@@ -28,8 +28,6 @@ internal abstract class AbstractTransactionService
     {
         var request = new RestRequest { Method = method, RequestFormat = DataFormat.Json };
 
-        Console.WriteLine(method + " " + GetUri());
-
         request.AddJsonBody(_transaction);
 
         return SendRequest(request);
@@ -54,8 +52,6 @@ internal abstract class AbstractTransactionService
         switch (status)
         {
             case >= 200 and < 300:
-                Console.WriteLine(response.Content);
-
                 return JsonConvert.DeserializeObject<TransactionResponse>(response.Content);
             case >= 300 and < 400:
                 throw new RedeException("A requisição foi redirecionada");
