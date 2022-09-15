@@ -1,21 +1,21 @@
 using System;
+using System.Collections.Generic;
 using eRede;
 using eRede.Service.Error;
 using NUnit.Framework;
 using Environment = eRede.Environment;
-using Transaction = eRede.Transaction;
 
 namespace eRedeTests;
 
 public class eRedeTest
 {
+    private string? _cardCvv;
+    private string? _cardHolder;
+    private string? _cardNumber;
     private string? _ec;
-    private string? _token;
     private Environment? _environment;
     private DateTime _expiration;
-    private string? _cardNumber;
-    private string? _cardHolder;
-    private string? _cardCvv;
+    private string? _token;
 
     [SetUp]
     public void Setup()
@@ -31,6 +31,67 @@ public class eRedeTest
         _cardNumber = "5448280000000007";
         _cardCvv = "123";
         _cardHolder = "Fulano de tal";
+    }
+
+    [Test]
+    public void Test3DS2()
+    {
+        var store = new Store("", "", _environment);
+        var transaction = new Transaction
+        {
+            Amount = 20,
+            Reference = "pedido" + new Random().Next(200, 10000),
+            ThreeDSecure = new ThreeDSecure
+            {
+                Embedded = true,
+                UserAgent =
+                    "Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405",
+                OnFailure = ThreeDSecure.ContinueOnFailure,
+                Device = new Device
+                {
+                    ColorDepth = 1,
+                    DeviceType3ds = "BROWSER",
+                    JavaEnabled = false,
+                    Language = "BR",
+                    ScreenHeight = 1080,
+                    ScreenWidth = 1920,
+                    TimeZoneOffset = 3
+                }
+            },
+            Urls = new List<Url>
+            {
+                new()
+                {
+                    Kind = Url.ThreeDSecureSuccess, url = "https://scommerce.userede.com.br/LojaTeste/Venda/sucesso"
+                },
+                new()
+                {
+                    Kind = Url.ThreeDSecureFailure, url = "https://scommerce.userede.com.br/LojaTeste/Venda/opz"
+                }
+            }
+        }.CreditCard(
+            _cardNumber,
+            _cardCvv,
+            _expiration.Month.ToString(),
+            _expiration.Year.ToString(),
+            _cardHolder
+        );
+
+        var response = new eRede.eRede(store).Create(transaction);
+
+        switch (response.ReturnCode)
+        {
+            case "201":
+                Console.WriteLine("A autenticação não é necessária");
+                break;
+            case "220":
+                Console.WriteLine($"URL de redirecionamento enviada: {response.ThreeDSecure.Url}");
+                break;
+            default:
+                Console.WriteLine(
+                    $"Foi retornado o código {response.ReturnCode} com a seguinte mensagem: '{response.ReturnMessage}");
+                break;
+        }
     }
 
     [Test]

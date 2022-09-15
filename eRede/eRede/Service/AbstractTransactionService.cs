@@ -46,6 +46,7 @@ internal abstract class AbstractTransactionService
         var response = client.Execute(request);
 
         if (response is null) throw new NullReferenceException("Response is null");
+        if (response.Content is null) throw new NullReferenceException("Response content is null");
 
         var status = (int)response.StatusCode;
 
