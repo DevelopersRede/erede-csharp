@@ -98,29 +98,62 @@ mais através [da documentação](https://www.userede.com.br/desenvolvedores/pt/
 var store = new Store(pv, token, environment);
 var transaction = new Transaction
 {
-    amount = 20,
-    reference = "pedido" + new Random().Next(200, 10000)
-}.DebitCard(
-    "2223000148400010",
-    "123",
+    Amount = 20,
+    Reference = "pedido" + new Random().Next(200, 10000),
+    ThreeDSecure = new ThreeDSecure
+    {
+        Embedded = true,
+        UserAgent =
+            "Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405",
+        OnFailure = ThreeDSecure.ContinueOnFailure,
+        Device = new Device
+        {
+            ColorDepth = 1,
+            DeviceType3ds = "BROWSER",
+            JavaEnabled = false,
+            ScreenHeight = 1080,
+            ScreenWidth = 1920,
+            TimeZoneOffset = 3
+        }
+    },
+    Urls = new List<Url>
+    {
+        new()
+        {
+            Kind = Url.ThreeDSecureSuccess, url = "https://scommerce.userede.com.br/LojaTeste/Venda/sucesso"
+        },
+        new()
+        {
+            Kind = Url.ThreeDSecureFailure, url = "https://scommerce.userede.com.br/LojaTeste/Venda/opz"
+        }
+    }
+}.CreditCard(
+    "5448280000000007",
+    "235",
     "12",
     "2020",
     "Fulano de tal"
 );
 
-transaction.AddUrl("http://example.org/success", Url.THREE_D_SECURE_SUCCESS);
-transaction.AddUrl("http://example.org/failure", Url.THREE_D_SECURE_FAILURE);
-
-var response = new eRede.eRede(store).create(transaction);
+var response = new eRede.eRede(store).Create(transaction);
 ```
 
 Assim que a transação for criada, o cliente precisará ir até a página do banco para autenticar. O código de status `220`
 indica que o cliente precisará ser redirecionado:
 
 ```csharp
-if (response.returnCode == "220")
+switch (response.ReturnCode)
 {
-    Console.Write(response.threeDSecure.url);
+    case "201":
+        Console.WriteLine("A autenticação não é necessária");
+        break;
+    case "220":
+        Console.WriteLine($"URL de redirecionamento enviada: {response.ThreeDSecure.Url}");
+        break;
+    default:
+        Console.WriteLine(
+            $"Foi retornado o código {response.ReturnCode} com a seguinte mensagem: '{response.ReturnMessage}");
+        break;
 }
 ```
 
