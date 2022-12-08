@@ -5,7 +5,7 @@ SDK de integração eRede
 # Funcionalidades
 Este SDK possui as seguintes funcionalidades:
 
-*Autorização
+* Autorização
 * Captura
 * Consultas
 * Cancelamento
