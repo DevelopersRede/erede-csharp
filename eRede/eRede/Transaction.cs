@@ -62,6 +62,9 @@ public class Transaction
     public List<Url> Urls { get; set; }
     public Additional Additional { get; set; }
 
+    public SubMerchant SubMerchant { get; set; }
+    public string PaymentFacilitatorID { get; set; }
+
     private void PrepareRefunds()
     {
         Refunds ??= new List<Refund>();
@@ -134,5 +137,12 @@ public class Transaction
         ExpirationYear = expirationYear;
         CardHolderName = cardHolderName;
         Kind = kind;
+    }
+
+    public void Mcc(string softDescriptor, string paymentFacilitatorID, SubMerchant subMerchant)
+    {
+        SoftDescriptor = softDescriptor;
+        PaymentFacilitatorID = paymentFacilitatorID;
+        SubMerchant = subMerchant;
     }
 }

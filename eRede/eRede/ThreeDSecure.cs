@@ -2,6 +2,7 @@ namespace eRede;
 
 public class ThreeDSecure
 {
+    public const string DataOnly = "DATA_ONLY";
     public const string MpiRede = "MPI Rede";
     public const string MpiCliente = "MPI Cliente";
 
@@ -30,4 +31,5 @@ public class ThreeDSecure
     public string ReturnMessage { get; set; }
     public string ThreeDIndicator { get; set; }
     public string DirectoryServerTransactionId { get; set; }
+    public string challengePreference { get; set; }
 }
